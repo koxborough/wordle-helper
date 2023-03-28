@@ -34,6 +34,9 @@ public class WordleHelper
         while (file.hasNext())
             list.add(file.next());
 
+        // No more use for the list of possible starting words
+        file.close();
+
         // "Waiver" to help the player better understand the rules they must follow to not
         // cause any problems the program may run in to
         String waiver = "N";
@@ -93,6 +96,7 @@ public class WordleHelper
             {
                 System.out.println("Remember for next time, the input is important!");
                 System.out.println("FIVE characters long!");
+                userInput.close();
                 return;
             }
 
@@ -107,6 +111,7 @@ public class WordleHelper
                     case 0:
                         System.out.println("There's no possible words left, which means one of us screwed up.");
                         System.out.println("I hope you had fun though! Appreciate ya!");
+                        userInput.close();
                         return;
                     case 1:
                         if (list.head().equalsIgnoreCase(green))
@@ -114,6 +119,7 @@ public class WordleHelper
                         else
                             System.out.print("Only one more left! The answer must be...: ");
                         System.out.println(list.head());
+                        userInput.close();
                         return;
                     default:
                         System.out.println("You are getting so close, there are only " + list.size() + " possibilities!");
@@ -126,5 +132,6 @@ public class WordleHelper
                 System.out.println("There are still " + list.size() + " words left. Good luck!");
             }
         }
+        userInput.close();
     }
 }
